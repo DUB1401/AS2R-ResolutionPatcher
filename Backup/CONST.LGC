@@ -1,0 +1,918 @@
+#include "maps\zconst.lgc"
+
+
+#ifndef CONST_PERKS_H
+        #include "maps\const_perks.lgc"
+#endif
+
+#ifndef CONST_NET_H
+        #include "maps\const_net.lgc"
+#endif
+
+//если демоверсия, то должно стоять 1. если норм. игра, то 0.
+//в режиме демоверсии:
+//      1)после уровня Z_DEMO_MAXLEV показывается nag.map.
+//      2)через меню continue дальше уровня Z_DEMO_MAXLEV не уйдешь
+#define Z_DEMO_VER            0
+//номер последнего уровня в демо версии (может быть не равен кол-ву уровенй, если Z_FIRST_LEVEL_NUM != 0)
+#define Z_DEMO_MAXLEV                     6
+// количество уровней в сурвайв карьера в демо версии
+#define Z_DEMO_LEV_CNT_CAREER 2
+//показывать или нет магазин после брифинга
+#define Z_SHOW_SHOP_AFTER_BRIEFING        0
+//первый уровень игры. обычно 1-ый, но для демы 2-ой бывает
+#define Z_FIRST_LEVEL_NUM                 1
+//номер последнего уровня в net-сурвайв карьере в демо версии
+#define Z_DEMO_LEV_CNT_CAREER_NET         6
+//разрешать ли multiplayer в деме
+#define Z_ALLOW_MULTIPLAYER_INDEMO        true
+//разрешать ли standfirm в деме
+#define Z_ALLOW_STANDFIRM_INDEMO         true
+
+//---------------------------------------------------------------------------
+//этот параметр, естественно не влияет на реальный максимум игроков в игре
+//но он должен быть равен параметру MAX_PLAYER из exe-шника
+#define MAX_PLAYER                              8       //??
+//
+#define MAX_NET_PLAYER                          6       //??
+
+
+//время перерождения оружия и прочих предметов в сетке
+#define NET_ITEMRESPAWNTIME                                              40000
+
+//
+#define NVID_MOUSE_TIP                                                  15
+
+//------------------------------------------------------------------------------------------
+//расстояние, на которое уезжает для скрытия сообщение о достижении нового уровня
+#define MIN_EXPADD_DELTA_X                              -350
+
+//скорость выезжания и заезжания полоски "NextLevel" (пикселей в секунду)
+#define NEXTLEVEL_SLIDE_SPEED                   15
+
+//скорость добавления направлений при плавном изменении направления (движковых градусов в секунду)
+//для полоски hp героя
+#define HPSPRITE_DIR_SPEED                              128
+//для полоски hp брони
+#define ARMORSPRITE_DIR_SPEED                   128
+//для полоски опыта
+#define CUREXPSPRITE_DIR_SPEED                 128
+
+//на этот коэффициент (в процентах) увеличивается задержка текста в зависимости от выставленной опции
+#define TEXT_DELAY_MIN                                                  100
+#define TEXT_DELAY_MAX                          280
+//коэффициент по умолчанию
+#define TEXT_DELAY_DEFAULT                      150
+
+//zmNEW2006Feb20: задержка текста в зависимости от количества строк в фразе
+#define TEXT_DELAY_STR1                      2500
+#define TEXT_DELAY_STR2                      3000
+#define TEXT_DELAY_STR3                      4000
+#define TEXT_DELAY_STR4                      5500
+#define TEXT_DELAY_STR5                      6000
+
+//------------------------------------------------------------------------------------------
+//гамма для предметов, кот. нельзя поставить герою
+#define GMA_DSBLD_R                                              0
+#define GMA_DSBLD_G                                             -250
+#define GMA_DSBLD_B                                             -250
+
+//------------------------------------------------------------------------------------------
+//коэффициенты для рамки повреждения героя
+
+//время зажигания (в миллисекундах)
+#define BLINK_TIME_HPSPRITE_1    50
+//время погасания (в миллисекундах)
+#define BLINK_TIME_HPSPRITE_2    300
+//vid 
+#define HPFRAME_SPRITE_VID                              740
+//минимальное мигание альфы рамки в процентах (даже при супер-маленьком уроне)
+#define DMG_FRAME_BLINK_MIN                             15
+//при таком уроне (в процентах от hp) рамка мигает по максимуму
+#define DMG_FRAME_MAX_DAMAGE                    35
+
+//------------------------------------------------------------------------------------------
+//количество скиллов, добавляемых за уровень опыта
+#define SKILLS_ADD_PER_LEVEL                    5
+//количество скиллов, добавляемых за уровень опыта в survive
+#define SKILLS_ADD_SURVIVE                      3
+
+//стоимость брони при полном повреждении (в процентах - от 0 до 100)
+//повышая коэффициент, повышается ценность поломанной брони, понижается стоимость ремонта
+#define FULLDAMAGED_ARMOR_COST                  30
+
+//------------------------------------------------------------------------------------------
+//дистанция автоподбора в пикселях
+#define AUTOTAKING_DIST                 50
+
+//------------------------------------------------------------------------------------------
+//максимальное значение перка, кот. только может быть (прописан также в exe-шнике)
+#define MAXIMUM_PERK_VALUE              200
+//коэффициент (в процентах), на который увеличивается MaxSpeed при прокачке скилла скорости на 200.
+#define MAX_SPEED_PERCENT                               55
+
+//------------------------------------------------------------------------------------------
+#define FADE_GAME_TIME        500  // время для перехода между менюшками при помощи fade
+#define FADE_LOOSE_TIME       1500 // время для перехода при помощи fade после проигрыша
+#define SND_HERO_FOOT         10   //звук топота ног - для отключения при загрузке нового уровня
+
+//звук, проигрываемый при получении героем нового уровня
+#define SND_INCEXPLEVEL       124
+
+//время (в миллисекундах) между рождением нового плюсика в инвентаре
+#define INV_PLUS_DELTA_TIME             200
+
+//------------------------------------------------------------------------------------------
+//константы, перенесенные из common.lgc. разобрать!
+#define FLASH_ON_INTENSIVE    7000  // интенсивность гаммы необходимая для включения фонарика
+#define DRON_FLY_HEIGHT       70
+#define ADRENALIN_BONUS_DELAY 10000
+#define SPEEDUP_BONUS_DELAY   10000
+#define SPEEDDOWN_BONUS_DELAY 10000
+#define ITEM_DELAY            200   // время в ms задержки перед взятием вещей выпавших из открываемых ящиков
+#define MISSION_STATE_Y       100    // координаты смещения надписи о провале или выполнении миссии относительнго низа экрана
+
+//------------------------------------------------------------------------------------------
+//минимальный и максимальный размеры монстра, устанавливаемые при создании, если не выставлен в mapedit'е.
+//размер устанавливается случайно от MIN_RANDOMSCALE_PERCENT% до MAX_RANDOMSCALE_PERCENT%
+#define MIN_RANDOMSCALE_PERCENT                 50      //;50
+#define MAX_RANDOMSCALE_PERCENT                 110     //;110
+//для конкретных vid'ов можно указать отдельно MIN_RANDOMSCALE_PERCENT
+GetMinScale(int iVid)
+{
+        if(iVid==1030) return 70;
+        if(iVid==1070) return 100;
+        if(iVid==1080) return 100;
+        if(iVid==1087) return 90;
+        if(iVid==1092) return 80;
+        if(iVid==1037) return 80;
+        if(iVid==1050) return 80;
+        if(iVid==1060) return 90;
+        if(iVid==1830) return 80;
+        if(iVid==1840) return 85;
+        if(iVid==1820) return 90;
+        if(iVid==1850) return 95;
+        if(iVid==1860) return 95;
+        if(iVid==1890) return 100;
+//        if(iVid==1895) return 100;
+        if(iVid==1901) return 100;
+        return MIN_RANDOMSCALE_PERCENT;
+}
+//для конкретных vid'ов можно указать отдельно MAX_RANDOMSCALE_PERCENT
+GetMaxScale(int iVid)
+{
+        if(iVid==1030) return 125;
+        if(iVid==1070) return 100;
+        if(iVid==1080) return 100;
+        if(iVid==1087) return 125;
+        if(iVid==1092) return 115;
+        if(iVid==1037) return 115;
+        if(iVid==1050) return 100;
+        if(iVid==1060) return 120;
+        if(iVid==1830) return 110;
+        if(iVid==1840) return 120;
+        if(iVid==1820) return 130;
+        if(iVid==1850) return 105;
+        if(iVid==1860) return 105;
+        if(iVid==1890) return 100;
+//        if(iVid==1895) return 100;
+        if(iVid==1901) return 100;
+        return MAX_RANDOMSCALE_PERCENT;
+}
+
+
+//далее следуют числа на которые увеличиваются составляющие цвета, в зависимости от ситуации:
+
+//если монстр увеличен до MAX_RANDOMSCALE_PERCENT%
+#define INC_RED_ON_MAX           -20
+#define INC_GREEN_ON_MAX         -130
+#define INC_BLUE_ON_MAX          -130
+//число, на которое увеличивается цвет, если монстр уменьшен до MIN_RANDOMSCALE_PERCENT%
+#define INC_RED_ON_MIN           -90
+#define INC_GREEN_ON_MIN          10
+#define INC_BLUE_ON_MIN          -90
+
+//макс. скорость монстров размера MIN_RANDOMSCALE_PERCENT увеличиваем на MONST_SPEED_UP%
+//для отсальных уменьшенных монстров - равномерно интерполируем от MONST_SPEED_UP% до 0%
+#define MONST_SPEED_UP            50
+
+//------------------------------------------------------------------------------------------
+#define HIGHLIGHTCELL_DISPLACEMENT_X    41
+#define HIGHLIGHTCELL_DISPLACEMENT_Y    51
+
+//------------------------------------------------------------------------------------------
+//vid пятна фонарика
+#define NVID_SPOT_LIGTH         140
+//vid луча фонарика
+#define NVID_RAY_LIGTH         1342
+//vid пятна от света фар
+#define NVID_CAR_SPOT_LIGTH     140
+//vid луча от света фар
+#define NVID_CAR_RAY_LIGTH     1342
+
+//можно ли выключать фары у машины
+#define CAN_TURNOFF_HIGHLIGHTS  0
+
+//------------------------------------------------------------------------------------------
+//music constants
+
+#define MUSIC_NONE                                              0
+#define MUSIC_AMBIENTRAND                                       1
+#define MUSIC_ACTIONRAND                                        2
+#define MUSIC_BOSSRAND                                          3
+#define MUSIC_MENU                                              13
+#define MUSIC_LOGO                                              12
+//#define MUSIC_GAMEMENU                                        13
+
+
+//случайная последовательность треков
+#define M_RANDOM        "xxx"
+//треки играют последовательно
+#define M_DIRECT        "uuu"
+
+
+static string MusicFiles[] ={
+/*00*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*01*/   M_RANDOM, "", "", "", "", "", "", "", "", "", "", "", "",
+/*02*/   M_RANDOM, "amb01", "amb02", "amb03", "", "", "", "", "", "", "", "", "",
+/*03*/   M_RANDOM, "action01", "action02", "action03", "action04", "action05", "action06", "action07", "action08", "action09", "action10", "action11", "",
+/*04*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*05*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*06*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*07*/   M_DIRECT, "amb_night", "", "", "", "", "", "", "", "", "", "", "",
+/*08*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*09*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*10*/   M_DIRECT, "rain", "", "", "", "", "", "", "", "", "", "", "",
+/*11*/   M_DIRECT, "wind", "", "", "", "", "", "", "", "", "", "", "",
+/*12*/   M_DIRECT, "logo_mus", "", "", "", "", "", "", "", "", "", "", "",
+/*13*/   M_RANDOM, "theme", "", "", "", "", "", "", "", "", "", "", "",
+/*14*/   M_DIRECT, "entering", "", "", "", "", "", "", "", "", "", "", "",
+/*15*/   M_DIRECT, "amb03", "amb01", "", "", "", "", "", "", "", "", "", "",
+/*16*/   M_DIRECT, "action09", "action05", "action06", "", "", "", "", "", "", "", "", "",
+/*17*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*18*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*19*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*20*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*21*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*22*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*23*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*24*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*25*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*26*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*27*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*28*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*29*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*30*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*31*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*32*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*33*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*34*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*35*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*36*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*37*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*38*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*39*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", "",
+/*40*/   M_DIRECT, "", "", "", "", "", "", "", "", "", "", "", ""
+};
+
+//------------------------------------------------------------------------------------------
+//порядковый список уровней для Campaign
+//!zm2006Feb17. теперь в коде прописано в zProfLdr::SetMaxLevNum(..)
+//(а также давно уже в скриптах во многих местах)
+//логика, которая считает, что кампания начинается с 1-го уровня, а survive с 0-ого
+
+//количество уровней
+#define MAX_LEVEL                                 18
+//список
+static string LevelNames[MAX_LEVEL+ 1] = {  "maps\\shop.map",               // 0
+                                            "maps\\Level_01.map",           // 1
+                                            "maps\\Level_02.map",           // 2
+                                            "maps\\Level_03.map",           // 3
+                                            "maps\\Level_04.map",           // 4
+                                            "maps\\Level_05.map",           // 5
+                                            "maps\\Level_06.map",           // 6
+                                            "maps\\Level_07.map",           // 7
+                                            "maps\\Level_07_2.map",         // 8
+                                            "maps\\Level_07_3.map",         // 9
+                                            "maps\\Level_08.map",           // 10
+                                            "maps\\Level_09.map",           // 11
+                                            "maps\\Level_10.map",           // 12
+                                            "maps\\Level_11.map",           // 13
+                                            "maps\\Level_12.map",           // 14
+                                            "maps\\Level_13.map",           // 15
+                                            "maps\\Level_14.map",           // 16
+                                            "maps\\Level_15.map",           // 17
+                                            "нужная пустышка"               //MAX_LEVEL
+                                                                                };
+
+static int QuestLevNums[MAX_LEVEL+ 1] = {  0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 8, 9, 10, 11, 12, 13, 14, 15, MAX_LEVEL-1 };
+//
+static int ShopLevNums[MAX_LEVEL+ 1] =  {  0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 9, 10, 11, 12, 13, 14, 15, MAX_LEVEL-1 };
+
+
+//------------------------------------------------------------------------------------------
+//порядковый список уровней для Survive
+
+//количество уровней
+#define MAX_SURV_LEVEL             17
+//номер карты для режима StandFirm
+#define SURV_LEV_STANDFIRM         14
+//номер карты для режима StandFirm-net
+#define SURV_LEV_STANDFIRM_NET         15
+//
+#define SURV_LEV_GUNSTAND          16
+//количество уровней в survive-кампании
+#define SURV_CAMPAIGN_LEV_NUM         5
+//номер последнего уровня в Net-survive-кампании
+#define SURV_CAMPAIGN_LEV_NUM_NET         9
+
+#define STANDFIRM                   "PREVED"
+#define NOT_STANDFIRM               "MEDVED"
+//список
+static string SurvLevelName[ 3*(MAX_SURV_LEVEL+ 1) ] = {       /*карта из survive.cfg*/
+                            /*0*/   "maps\\survive_01.map",                 "survive_01",      NOT_STANDFIRM,
+                            /*1*/   "maps\\survive_02.map",                 "survive_02",      NOT_STANDFIRM,
+                            /*2*/   "maps\\survive_03.map",                 "survive_03",      NOT_STANDFIRM,
+                            /*3*/   "maps\\survive_04.map",                 "survive_04",      NOT_STANDFIRM,
+                            /*4*/   "maps\\survive_05.map",                 "survive_05",      NOT_STANDFIRM,
+                            /*5*/   "maps\\career\\survive_01.map",         "survive_01",      NOT_STANDFIRM,
+                            /*6*/   "maps\\career\\survive_02.map",         "survive_02",      NOT_STANDFIRM,
+                            /*7*/   "maps\\career\\survive_03.map",         "survive_03",      NOT_STANDFIRM,
+                            /*8*/   "maps\\career\\survive_04.map",         "survive_04",      NOT_STANDFIRM,
+                            /*9*/   "maps\\career\\survive_05.map",         "survive_05",      NOT_STANDFIRM,
+                            /*10*/  "maps\\zmEmpty2.map",                   "survive_01",      NOT_STANDFIRM,
+                            /*11*/  "maps\\zmEmpty2.map",                   "survive_01",      NOT_STANDFIRM,
+                            /*12*/  "maps\\zmEmpty2.map",                   "survive_01",      NOT_STANDFIRM,
+                            /*13*/  "maps\\zmEmpty2.map",                   "survive_01",      NOT_STANDFIRM,
+                            /*14*/  "maps\\survive_standfirm_01.map",       "survive_sf_01",   STANDFIRM,
+                            /*15*/  "maps\\COOPERATIVE\\cooperative.map",   "survive_sf_01",   STANDFIRM,
+                            /*16*/  "maps\\survive_gunstand_01.map",        "survive_gs_01",   STANDFIRM,
+                /*MAX_SURV_LEVEL*/  "нужная пустышка",                      "-----------",     NOT_STANDFIRM    };
+
+//------------------------------------------------------------------------------------------
+//списки vid'ов, не отображаемых и не рождающихся дочерними в различных режимах графики
+static int LowDetailVids[] =    { 117, // - Хвост от плазменной пули
+                                  120, // - кровь застывшая маленькая красная
+                                  102, // - Гильза лежащая
+                                  103, // - Гильза лежащая
+                                  104, // - Вспышка
+                                  128, // - Гильза лежащая
+                                  123, // - Дым от ракеты
+                                  124, // - Гало от ракеты
+                                  132, // - Лазер пуля хвост
+                                  133, // - Тень небольшая от взрыва
+                                  135, // - тень встраемаемая темная
+                                  144, // - тень небольшая встраемаемая
+                                  146, // - хвост от пули замарозки
+                                  148, // - Лазер тень от взрыва
+                                  150, // - Fx от плазмы
+                                  153, // - вспышка оранжевя
+                                  154, // - кровь застывшая вертикальная
+                                  158, // - Тень от магмы
+                                  159, // - хвост от магмы
+                                  167, // - кровь зелёная застывшая маленькая
+                                  170, // - Искра от пулемёта
+                                  171, // - Искра черная
+                                  174, // - Искра от взрыва
+                                  787, // - Дым от взрыва
+                                  176, // - Дымок
+                                  191, // - Тень от пулемёта монстра
+                                  195, // - Искра от пули кислотной
+                                  185, // - Световое пятно зелёное (Omni-Ligth)
+                                  199, // - Частица фиолетовая
+                                  //?? 663, // - Столб фонарь уличный
+                                  781, // - Искра маленькая от попадания в броню
+                                  791, // - Дым от разрушения объектов
+                                  756, // - Кровь отлетающая от монстра красная
+                                  784, // - Свет наружный большой (Omni-Ligth)
+                                  785, // - Свет от фонаря объёмный
+                                  1083, // - Взрыв кислотный на смерть камикадзе
+                                  3007, // - искра
+                                  //1339, // - Световое пятно от нейронного взрыва
+                                  1340, // - След от нейронной пули
+                                  1306, // - FX: Облако туман                                  
+                                  116, // - свет оранжевый мерцающий
+                                  234, // - свет 
+                                  235,// - свет 
+                                  1310, // - Кровь точка
+                                  //?? 1408, // - Эффект уменьшения
+                                  1254, // - Дым от взрыва
+                                  187, // - частица оранжевая
+                                  188, // - частица зелёная
+                                  189, // - частица красная
+                                  241,
+                                  3030,
+                                  1868,
+                                  218,
+                                  133
+                                };
+static int MediumDetailVids[] = { 108, // - тень небольшая
+                                  106, // - Дырка в стене от пули
+                                  119, // - 2 Monster оружее дым
+                                  121, // - Голубой свет от мониторов
+                                  138, // - световое пятно светло оранжевое пулемёта
+                                  //141, // - световое пятно Красное
+                                  //142, // - световое пятно Красное исчезающее
+                                  //145, // - Гало от красной лампы
+                                  177, // - Световое пятно от взрыва (Omni-Ligth)
+                                  755, // - Кровь отлетающая от монстра зелёная
+                                  757, // - Кровь отлетающая от гибов зелёная
+                                  758, // - Кровь отлетающая от гибов красная
+                                  762, // - Гало от мощной ракеты
+                                  1205, // - Тень танка
+                                  //1226, // - L01 лампа на стене ON
+                                  1241, // - трубы размер 1 (тень)
+                                  //1258, // - лампа на стене ON (синий свет)
+                                  1300, // - тень побольше
+                                  1301, // - тень мамки
+                                  1302, // - Тень для камикадзе
+                                  1303, // - Тень для подводника
+                                  //?? 1311, // - Кровь точка ЗЕЛЁНАЯ
+                                  //?? 1314, // - Искра синая с (X направлениями)
+                                  //1317, // - световое пятно Белое (Shadow)
+                                  //1355, // - FX Лампочка красная
+                                  //1356, // - FX Лампочка зелёная
+                                  //1370, // - LIGHTS: большое освещение
+                                  //1371, // - LIGHTS: большое освещение (Shadow)
+                                  //1372, // - LIGHTS: большое освещение (map)
+                                  //1373, // - LIGHTS: свет мерцающий (shadow)
+                                  //1374, // - LIGHTS: свет синий (shadow)
+                                  1383, //глаза spinner-a
+                                  1514, //следы от машин
+
+                                  1507 // - Тень от деревьев
+                                };
+
+
+//------------------------------------------------------------------------------------------
+//списки vid'ов, окрашиваемых гаммой в режиме non-violence
+static int ViolentVids[] =      { 110, // - BLOOD:кровь застывшая красная
+                                  120, // - BLOOD:кровь застывшая маленькая красная
+                                  151, // - BLOOD:Гибы - летящий
+                                  152, // - BLOOD:Гибы - лежащие
+                                  154, // - BLOOD:кровь застывшая вертикальная
+                                  166, // - BLOOD:кровь зелёная застывшая
+                                  167, // - BLOOD:кровь зелёная застывшая маленькая
+                                  198, // - BLOOD:Гибы - лежащие зелёные
+                                  755, // - hide:Кровь отлетающая от монстра зелёная
+                                  756, // - hide:Кровь отлетающая от монстра красная
+                                  757, // - hide:Кровь отлетающая от гибов зелёная
+                                  758, // - hide:Кровь отлетающая от гибов красная
+                                  916, // - hide:кровь красная красная расплывающаяся
+                                  918, // - BLOOD:кровь застывшая красная 
+                                  1310, // - hide:Кровь точка
+                                  1311, // - hide:Кровь точка ЗЕЛЁНАЯ
+                                  1312, // - Генератор крови на смерть
+                                  1313, // - hide:Кровь расплывающаяся
+                                  1319  // - BLOOD:Гибы - лежащие 
+                                };
+
+//------------------------------------------------------------------------------------------
+//списки vid'ов, откючаемых в режиме non-violence
+static int ViolentVids2[] =      { 1532, // 
+                                   1029, // 
+                                   1036, // 
+                                   1041, // 
+                                   1045, // 
+                                   1065, // 
+                                   1096, // 
+                                   1801  // 
+                                };
+
+//------------------------------------------------------------------------------------------
+//списки vid'ов, которым надо в standfirm устанавливать lifeime 0
+
+//кол-во таких vid`ов
+#define SF_INSTANTBUILDVIDS             2
+
+static int StandFirmInstantBuild[SF_INSTANTBUILDVIDS] =      {   1313, // 
+                                                                  916  // 
+                                                             };
+
+
+//------------------------------------------------------------------------------------------
+//типы режима non-violence (можно добавлять новые, работать будет)
+#define VM_NONVIOLENT   0
+#define VM_VIOLENT              1
+//количество типов режима non-violence
+#define VM_COUNT                2
+//режим non-violence по умолчанию
+#define VM_DEFAULT              VM_VIOLENT
+//названия строковых параметров для режимов non-violence из strings.ini
+static string VM_TEXTS[] = { "VM_NONVIOLENT", "VM_VIOLENT" };
+//гамма объектов в режиме non-violence
+static int VM_BLOODGAMMA_RED[] = { -180, 0 };
+static int VM_BLOODGAMMA_GREEN[] = { 30, 0 };
+static int VM_BLOODGAMMA_BLUE[] = { 0, 0 };
+//отключать ли vid'ы из массива ViolentVids
+static int VM_TURNOFF_VIDS[] = { false, false };
+//отключать ли vid'ы из массива ViolentVids2
+static int VM_TURNOFF_VIDS2[] = { true, false };
+//отключать ли смерть ANI_DEATH2
+static int VM_TURNOFF_DEATH2[] = { true, false };
+//делать ли машинку забрызганной кровью
+static int VM_BLOODY_CAR[] = { false, true };
+
+
+//виды из ReColorUnitBlood перекрашивать в RECOLOR_BLOOD_GREEN или RECOLOR_BLOOD_RED
+static int VM_RED_BLOOD[] = { false, true };
+
+// цвет крови юнитов для перекрашивания фиолетового
+int ReColorUnitBlood[] = { -1, -1, -1, -1, -1};
+
+#define RECOLOR_BLOOD_GREEN              0x003000
+#define RECOLOR_BLOOD_RED                0x500000
+
+
+//------------------------------------------------------------------------------------------
+//список возможных разрешений (можно добавлять новые, работать будет)
+#define RT_RES0                 0
+#define RT_RES1                 1
+//количество возможных разрешений
+#define RT_COUNT                2
+//режим по умолчанию
+#define RT_DEFAULT              RT_RES0
+//названия строковых параметров для возможных разрешений из strings.ini
+static string RT_TEXTS[] = { "RT_RES0", "RT_RES1" };
+//размеры экранов
+static int RT_SCREEN_X[] = { 800, 1024 };
+static int RT_SCREEN_Y[] = { 600, 768 };
+
+
+//------------------------------------------------------------------------------------------
+//режим inputtype по умолчанию
+#define INPUT_TYPE_DEFAULT      0
+
+//------------------------------------------------------------------------------------------
+//кординаты ограничения скроллирования экрана для локаций
+//если для какой то локации BoxesLeft == -1, то ограничений на скроллирование не накладывается
+
+//гамма для локаций
+//currently unneeded - gamma now is stored as teleport item
+//static int GammaForBox[]              = { 0x625742, 0x2B2B2B };
+
+//для 1-го уровня:
+//                                  локации: 01   02
+static int BoxesLeft[]                  = { 0,    -1 };
+static int BoxesTop[]                   = { 0,    2100 };
+static int BoxesRight[]                 = { 9234, 4500 };
+static int BoxesBottom[]                = { 8230, 4480 };
+//идёт ли дождь
+static int RainForBox[]                 = { true, false };
+
+//для 8-го уровня:
+//                                  локации: 01     02
+//static int BoxesLeft_8[]                  = { 1362,    -1 };
+//static int BoxesTop_8[]                   = { 0,       0 };
+//static int BoxesRight_8[]                 = { 9234,    0 };
+//static int BoxesBottom_8[]                = { 8230,    0 };
+//идёт ли дождь
+//static int RainForBox_8[]                 = { true, false };
+
+
+//------------------------------------------------------------------------------------------
+//константы для уровней сложности (можно добавлять новые, работать будет)
+
+//список уровней сложности
+#define GT_EASY                 0
+#define GT_MEDIUM               1
+#define GT_HARD                 2
+#define GT_IMPOSSIBLE   3
+//количество уровней сложности
+#define GT_COUNT                4
+//уровень сложности по умолчанию
+#define GT_DEFAULT              GT_MEDIUM
+//коэффициенты для hp монстров
+static int GT_COEFFS[] = { 50, 100, 260, 450 };
+//коэффициенты для damage герою
+static int HERODAMAGE_COEFFS[] = { 80, 100, 200, 400 };
+//названия строковых параметров для уровней сложности из strings.ini
+static string GT_TEXTS[] = { "GT_EASY", "GT_MEDIUM", "GT_HARD", "GT_IMPOSSIBLE" };
+//невидимость стрелок-helper'ов
+static int HELPERS_INVISIBILITY[] = { false, false, false, false };
+
+//------------------------------------------------------------------------------------------
+//!!!монстры во всех списках не должны дублироваться
+
+//список vid'ов монстров
+static int MonstersVid[]  = { 1025, 1030, 1037, 1050, /*1060, */1061, 1080, 1087, 1092, 1840, 1830, 1861,
+                              1070, 1820, 1850, 1870, 1901 };	//50, 60
+//список vid'ов, кот. нужно учитывать при подсчете монстров на карте (они рожают монстров)
+static int MonsterParentsVid[]  = { 1066, 1020, 1086, 1060, 1860, 1890 };
+
+//список vid'ов, кот. нужно считать убитыми, если они умирают второй смертью (т.к. во 2-ую фазу не переходят)
+static int MonstExplodeKillVid[]  = { 1060 };
+
+//список vid'ов, кот. нужно гипнотизировать, даже если они не указаны в MonstersVid
+static int MonstToHypnVid[]  = { 1060 };
+
+//дополнительный список монстров для survive - их также учитывать при подсчете кол-ва монстров
+static int SurvMonstersVidAdd[]  = { 1060, 1860 };//, 1895
+
+//------------------------------------------------------------------------------------------
+//оружие выше которого монстра разрывает на куски второй смертью, если 0 то разрывает в зависимости
+//от damage и hp (не используется)
+//static int MonsterExplodeWeapon[ MONSTERS_TYPES ]= { 0, 0,   5,   9,   7,   5, 0 };
+
+
+//------------------------------------------------------------------------------------------
+//константы для раскраски героев
+static int HERO_COLORS_RED[]            =       {   105,  70, 110,  15,  15,  20,  80,  25 };
+static int HERO_COLORS_GREEN[]          =       {   105,  13,  70, 100,  70,  20,  10,  25 };
+static int HERO_COLORS_BLUE[]           =       {   105,  13,  23,  15,  70,  90,  65,  25 };
+
+
+SetReducePercents();
+//------------------------------------------------------------------------------------------
+InitializeConstants()
+{
+        iff(1)
+        {
+    SetReducePercents();
+
+        int i, j;
+
+    #ifndef NET_GAME_RUN
+        //3-я армия - охранники
+        SetRelation( 3, 0, RELATION_FRIEND );
+        SetRelation( 0, 3, RELATION_FRIEND );
+        //4-я армия - загипнотизированные монстры
+        SetRelation( 4, 0, RELATION_NEUTRAL );
+        SetRelation( 0, 4, RELATION_NEUTRAL );
+        SetRelation( 4, 1, RELATION_ENEMY );
+        SetRelation( 1, 4, RELATION_ENEMY );
+        //5-я армия - роботы
+        SetRelation( 5, 0, RELATION_ENEMY );
+        SetRelation( 0, 5, RELATION_ENEMY );
+        SetRelation( 5, 1, RELATION_ENEMY );
+        SetRelation( 1, 5, RELATION_ENEMY );
+        SetRelation( 5, 3, RELATION_ENEMY );
+        SetRelation( 3, 5, RELATION_ENEMY );
+        SetRelation( 5, 4, RELATION_ENEMY );
+        SetRelation( 4, 5, RELATION_ENEMY );
+        //6-я армия - монстры из зацикленных генераторов, кот. не нужно подсчитывать как убитых
+        for( i = 0; i < MAX_PLAYER; i++ )
+        {
+                //полностью копируем с первой армии
+                int rel = GetRelation( 1, i );
+            SetRelation( 6, i, rel );
+            rel = GetRelation( i, 1 );
+            SetRelation( i, 6, rel );
+        }
+        SetRelation( 6, 6, RELATION_FRIEND );
+    #endif
+    //
+    int PlayersRel = RELATION_NEUTRAL;
+    #ifdef Z_SURVIVE
+        PlayersRel = RELATION_FRIEND;
+    #endif
+    //
+    #ifdef NET_GAME_RUN
+        //выставляем, чтобы 1-я армия (монстры) были со всеми RELATION_ENEMY
+        for( i = 0; i < MAX_PLAYER; i++ )
+        if( i != 1 && i != 2 )
+        {
+            SetRelation( 1, i, RELATION_ENEMY );
+            SetRelation( i, 1, RELATION_ENEMY );
+        }
+        //выставляем, чтобы все игроки были друг с другом RELATION_FRIEND
+        for( i = 0; i < MAX_PLAYER; i++ )
+            for( j = 0; j < MAX_PLAYER; j++ )
+        if( i != 1 && i != 2 && j != 1 && j != 2 && i != j )
+        {
+                SetRelation( i, j, PlayersRel );
+            SetRelation( j, i, PlayersRel );
+            }
+            //сам с собой всегда friend
+        for( i = 0; i < MAX_PLAYER; i++ )
+        {
+                if( i != 1 && i != 2)
+                    SetRelation( i, i, RELATION_FRIEND );
+                }
+    #endif
+
+            if(Z_DEMO_VER && Z_DEMO_MAXLEV + 1 < MAX_LEVEL)
+                LevelNames[Z_DEMO_MAXLEV + 1] = "maps\\nag.map";
+            if(Z_DEMO_VER && Z_DEMO_LEV_CNT_CAREER < MAX_SURV_LEVEL)
+                SurvLevelName[3*Z_DEMO_LEV_CNT_CAREER + 0] = "maps\\nag.map";
+        }
+    //
+    SendCommand(Ext_SetFulldamagedArmorCost, FULLDAMAGED_ARMOR_COST);
+}
+
+
+//------------------------------------------------------------------------------------------
+//константы для телепортов
+//длительность телепорта через люк
+#define TELEPORT_TIME_HATCH                     1200
+//длительность телепорта через платформу
+#define TELEPORT_TIME_PLATFORM          2000
+//длительность телепорта через обычный телепорт
+#define TELEPORT_TIME_USUAL                     800
+//длительность телепорта через телепортирование через скрипт
+#define TELEPORT_TIME_SCRIPT                    800
+//пауза после телепортирования, в течение которой телепортом нельзя пользоваться
+#define TELEPORT_PAUSE                          6000
+
+//радиус, в котором герой считается попавшим в телепорт (относительно люка)
+#define TELEPORT_RADIUS                         50
+
+
+//------------------------------------------------------------------------------------------
+//константы для уменьшающего оружия
+
+//тип уменьшения монстров (2 - постепенный, 1 - после того, как hp сбросятся до определенного уровня)
+#define REDUCING_TYPE                           2
+//кол-во hp в процентах от maxhp, при котором монстр начинает уменьшаться после попадания
+#define HP_FOR_REDUCE                           20
+//размер монстра после уменьшения в процентах от нормального размера (если не указано для vid'а)
+#define REDUCE_PERCENT                          30
+//случайный разброс минимального размера монстра
+#define REDUCE_DISPERSION                       2
+//vid пули уменьшающего оружия
+#define NVID_REDUCE_BULLET                      1407
+//speed of reducinging in percents per second
+#define REDUCING_SPEED                          50
+//vid эффекта на уменьшение из уменьшающего оружия
+#define NVID_REDUCE_EFFECT                      1408
+//z эффекта на уменьшение из уменьшающего оружия
+#define REDUCE_EFFECT_Z                         35
+
+    
+//для конкретных vid'ов можно указать отдельно REDUCE_PERCENT
+SetReducePercents()
+{
+    SendCommand( EXT_SETVIDREDUCESCALE, 1030, 50 );
+}
+
+
+//------------------------------------------------------------------------------------------
+//константы для огнемета
+
+//на сколько уменьшится гамма при полном обожжении монстра (до смерти)
+#define BURNING_PER_DAMAGE                                      256
+//минимальная гамма при обжигании
+#define MIN_BURNING                                             -200
+
+//vid пули огнемета
+#define NVID_FLAMETHROWER_BULLET                                904
+#define NVID_FLAMETHROWER_BULLET2                               1343
+#define NVID_BURNER_BULLET                                      1392
+#define NVID_BURNER_BULLET2                                     1369
+
+//vid пули freeze-оружия
+#define NVID_FREEZEWPN_BULLET                                1395
+#define NVID_FREEZEWPN_BULLET2                               1396
+
+
+//------------------------------------------------------------------------------------------
+//константы для стационарной аптечки
+
+//место рождения эффекта относительно аптечки
+static int SM_EFFECT_X[] = {  21, -21 };
+static int SM_EFFECT_Y[] = {  21,  21 };
+static int SM_EFFECT_Z[] = { -40, -40 };
+
+//радиус лечения стационарной аптечки
+#define STATICMEDKIT_HEALING_RADIUS             45
+//частота лечения в миллисекундах (добавляет по 1 hp)
+#define STATICMEDKIT_HEALING_PERIOD             200
+//рождаемый fx
+#define STATICMEDKIT_FX                         1347
+
+
+//------------------------------------------------------------------------------------------
+//константы для фар машин
+
+//смещение по x и y для первой и второй фары
+static int HeadLightsX[]    =   { 110,  110 };
+static int HeadLightsY[]    =   { 50, -50 };
+
+//смещение по x и y для первого и второго луча
+static int HeadLightRaysX[] =   { 100,  100 };
+static int HeadLightRaysY[] =   { 50, -50 };
+
+//высота рождения светового пятна
+#define HEAD_LIGHT_Z                    30
+//высота рождения лучей
+#define HEAD_LIGHT_RAYS_Z       30
+
+//scale для пятен от фар (1000 - это 100%)
+#define CAR_SPOT_SCALE                  1300
+//scale для лучей от фар (1000 - это 100%)
+#define CAR_RAY_SCALE                   1500
+
+//------------------------------------------------------------------------------------------
+//переменные для взлетающих над героем предметов (при автоподборе)
+
+//следовать ли за героем ( 0/1 )
+#define FOLLOW_FLAGMAN                  0
+
+//максимальное кол-во одновременно взлетающих предеметов
+//(если стек переполнен, то новые предметы не будут взлетать)
+#define MAX_FLY_NUM                             50
+//максимальное количество знаков в числе взлетающих предеметов (знак '+' тоже считается)
+#define MAX_CNT_NUM                             6
+
+//длительность полёта (в миллисекундах)
+#define FLYITEM_SHOWTIME                2200
+//время после начала полёта, через которое предмет начинает погасать
+#define FLYITEM_ALPHATIME               1400
+//минимальное время (в миллисекундах), через которое начинает вылетать следующий предмет
+#define FLYITEM_MINDELTATIME    100
+
+//специально для значка повышения уровня:
+//длительность полёта значка повышения уровня (в миллисекундах)
+#define FLYITEM_SHOWTIME_LEVELUP                1500
+//время после начала полёта, через которое начинает погасать значок повышения уровня
+#define FLYITEM_ALPHATIME_LEVELUP               800
+
+//начальная высота предмета относительно героя
+#define FLYITEM_Z_START                 90
+//окончательная высота предмета относительно героя
+#define FLYITEM_Z_FINISH                105
+//начальная альфа предмета
+#define FLYITEM_ALPHA_DEFAULT   0x00
+//окончательная альфа предмета
+#define FLYITEM_ALPHA_MAX               0x7F
+
+//ширина цифр
+#define NUMBER_WIDTH                    7
+//ширина знака '+'
+#define PLUS_WIDTH                              8
+//отступ для вывода цифр относительно картинки предмета
+#define NUMBER_DELTA_X                  20
+//отступ для вывода знака '+ относительно картинки предмета (только для денег!)
+#define PLUS_DELTA_X                    -10
+//отступ для вывода цифр относительно картинки предмета (только для денег!)
+#define MONEY_DELTA_X                   1
+//специальный NUMBER_DELTA_X для vid'а 2213 (money)
+#define VID2213_DELTA_X                 9
+//специальный NUMBER_DELTA_X для vid'а 2214 (hp и exp)
+#define VID2214_DELTA_X                 13
+//специальный NUMBER_DELTA_X для vid'а 1619 (ammo)
+#define VID1619_DELTA_X                 16
+
+
+//------------------------------------------------------------------------------------------
+//список vid'ов машин
+static int CarsVids[]  = { 1206, 3000, 1208, 3100 };
+
+//------------------------------------------------------------------------------------------
+//scale экрана при посадке в машину
+#ifndef CAR_SCREEN_SCALE
+        #define CAR_SCREEN_SCALE                        90
+#endif
+//scale экрана при управлении стационарной пушкой
+#define STATGUN_SCREEN_SCALE            100
+//длительность эффекта скаллирования
+#define SCREEN_SCALE_TIME                       1000
+
+//------------------------------------------------------------------------------------------
+//константы для машин
+
+//максимальная скорость. если авто развивает бОльшую, то двигатель большее её не ускоряет,
+//то есть данный параметр является "ограничителем" сверху. если максимальная скорость не может
+//быть достигнута из-за сопротивления воздуха и трения, то данный параметр ничем помочь не может.
+#ifndef VEH_1206_MAX_SPEED
+#define VEH_1206_MAX_SPEED                  270 //450
+#endif
+//коэффициент сопротивления воздуха. наибольшее влияние оказывает при высоких скоростях, т.к.
+//сопротивление воздуха рассчитывается через квадрат скорости
+//влияет на скорость разгона и максимальную скорость.
+#define VEH_1206_AIR_RESISTANCE             2200 //2300
+//коэффициент сопротивления силы трения (при качении автомобиля). оказывает линейное влияние
+//влияет на скорость разгона и максимальную скорость.
+#define VEH_1206_FRICTION_RESISTANCE        500
+//коэффициент бокового скольжения для передних колёс. менять осторожно!
+#define VEH_1206_STIFFNESS_FRONT           -850 //-1500
+//коэффициент бокового скольжения для задних колёс. менять осторожно!
+#define VEH_1206_STIFFNESS_REAR            -2500 //-5500                      
+//коэффициент, через который обрубается слишком большое боковое скольжение. чем больше
+//коэффициент, тем большее скольжение возможно. менять осторожно!
+#define VEH_1206_MAX_GRIP                  9550 //8650
+//сила, применяемая к автомобилю для разгона
+//влияет на скорость разгона и максимальную скорость.
+#ifndef VEH_1206_ACCELERATION_FORCE
+#define VEH_1206_ACCELERATION_FORCE         20
+#endif
+//масса автомобиля. можно было обойтись без неё, просто изменяя все остальные параметры.
+//влияет на ускорение.
+#define VEH_1206_MASS                       500
+//момент инерции автомобиля. непосредственным образом влияет на угловое ускорение - чем больше
+//момент инерции, тем ускорение угловой скорости меньше.
+#define VEH_1206_INERTIA                    20  // 100 //300
+//расстояние от центра инерции до оси передних колёс
+#define VEH_1206_FRONT_WHEELS_TO_CG_DIST    500
+//расстояние от центра инерции до оси задних колёс
+//соотношение FRONT_WHEELS_TO_CG_DIST и REAR_WHEELS_TO_CG_DIST влияет на угловое ускорение.
+//FRONT_WHEELS_TO_CG_DIST + REAR_WHEELS_TO_CG_DIST - длина машины. менять осторожно!
+#define VEH_1206_REAR_WHEELS_TO_CG_DIST     300
+//максимальный угол поворота колёс
+#define VEH_1206_MAX_STEER_ANGLE            48 // 40 //45
+//скорость поворота колёс в градусах за секунду
+#define VEH_1206_STEER_ANGLE_SPEED                      VEH_1206_MAX_STEER_ANGLE * 4
+
+
+//ненужная скриптовая переменная. без неё не работает.
+static int UnnededVardsfdgfdhfdgh;
