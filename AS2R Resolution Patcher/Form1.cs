@@ -13,6 +13,10 @@ namespace AS2R_Resolution_Patcher {
 		//---> Данные.
 		//================================================================================//
 
+		// Состояния: выполнены ли условия патчинга.
+		bool SteamInstalled = false, SavesFolderExists = false;
+		// Количество найденных нативных файлов.
+		int ExistsNativeFilesCount = 0;
 		// Разрешение экрана по оси X.
 		string ResolutionX = "";
 		// Разрешение экрана по оси Y.
@@ -25,9 +29,7 @@ namespace AS2R_Resolution_Patcher {
 		//================================================================================//
 
 		// Проверяет наличие нативных файлов и устанавливает для них цвета в контейнере.
-		private int CheckNativeFiles(string GameFolder) {
-			// Количество найденных нативных файлов.
-			int ExistsNativeFilesCount = 0;
+		private void CheckNativeFiles(string GameFolder) {
 
 			// Проверка существования нативного файла: damageframe1024.men.
 			if (File.Exists(GameFolder + "\\Maps\\damageframe1024.men")) { label16.ForeColor = System.Drawing.Color.Green; ExistsNativeFilesCount += 1; }
@@ -63,8 +65,6 @@ namespace AS2R_Resolution_Patcher {
 				else label24.ForeColor = System.Drawing.Color.Red;
 			}
 			else label24.ForeColor = System.Drawing.Color.Red;
-
-			return ExistsNativeFilesCount;
 		}
 
 		// Получает выбранное разрешение игры.
@@ -123,6 +123,10 @@ namespace AS2R_Resolution_Patcher {
 			// Высота экрана.
 			string Height = Screen.PrimaryScreen.Bounds.Height.ToString();
 
+			// Установка ширины и высоты в кастомное разрешение.
+			textBox1.Text = Width;
+			textBox2.Text = Height;
+
 			// Проверка каждого разрешение на соответствие реальному.
 			for (int i = 0; i < comboBox1.Items.Count; i++) if (comboBox1.Items[i].ToString().Contains(Width) && comboBox1.Items[i].ToString().Contains(Height)) comboBox1.SelectedIndex = i;
 		}
@@ -143,12 +147,9 @@ namespace AS2R_Resolution_Patcher {
 		//================================================================================//
 
 		private void Form1_Load(object sender, EventArgs e) {
-			// Состояния: выполнены ли условия патчинга.
-			bool SteamInstalled = false, SavesFolderExists = false;
+			
 			// Имя текущего пользователя ОС Windows.
 			string UserName = Environment.UserName;
-			// Количество найденных нативных файлов.
-			int ExistsNativeFilesCount = 0;
 			// Автоматическое определение разрешения экрана.
 			ResolutionAutodetection();
 			// Получение выбранного разрешения экрана.
@@ -183,10 +184,12 @@ namespace AS2R_Resolution_Patcher {
 			}
 
 			// Получение количества найденных нативных файлов.
-			ExistsNativeFilesCount = CheckNativeFiles(GameFolder);
+			CheckNativeFiles(GameFolder);
 
 			// Проверка выполнения условий патчинга.
-			if (ExistsNativeFilesCount == 7 && SteamInstalled && SavesFolderExists) button1.Enabled = true;
+			if (ExistsNativeFilesCount == 7 && SteamInstalled && SavesFolderExists) button1.Enabled = true; 
+			else button1.Enabled = false;
+
 		}
 
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
@@ -223,6 +226,9 @@ namespace AS2R_Resolution_Patcher {
 				textBox2.Visible = false;
 				label27.Visible = false;
 				label28.Visible = false;
+
+				// Проверка выполнения условий патчинга.
+				if (ExistsNativeFilesCount == 7 && SteamInstalled && SavesFolderExists) button1.Enabled = true;
 			}
 
 			// Получение выбранного разрешения экрана.
