@@ -154,8 +154,8 @@ namespace AS2R_Resolution_Patcher {
 			ResolutionAutodetection();
 			// Получение выбранного разрешения экрана.
 			GetResolution();
-			// Установка версии продукта в футер приложения.
-			label8.Text = Application.ProductVersion;
+			// Установка версии продукта в футер приложения (исправление непонятных символов в номере версии).
+			label8.Text = Application.ProductVersion.Split("+")[0];
 
 			// Если установлен Steam.
 			if (File.Exists("C:\\Program Files (x86)\\Steam\\steam.exe")) {

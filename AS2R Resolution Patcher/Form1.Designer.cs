@@ -299,7 +299,7 @@
 			// label7
 			// 
 			label7.AutoSize = true;
-			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+			label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
 			label7.Location = new Point(10, 420);
 			label7.Name = "label7";
 			label7.Size = new Size(51, 15);
@@ -309,7 +309,7 @@
 			// button1
 			// 
 			button1.Enabled = false;
-			button1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+			button1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
 			button1.Location = new Point(10, 335);
 			button1.Name = "button1";
 			button1.Size = new Size(600, 64);
@@ -321,7 +321,7 @@
 			// label8
 			// 
 			label8.AutoSize = true;
-			label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+			label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
 			label8.ForeColor = Color.Green;
 			label8.Location = new Point(60, 420);
 			label8.Name = "label8";
@@ -340,17 +340,17 @@
 			// label10
 			// 
 			label10.AutoSize = true;
-			label10.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point);
-			label10.Location = new Point(460, 420);
+			label10.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
+			label10.Location = new Point(426, 420);
 			label10.Name = "label10";
-			label10.Size = new Size(157, 15);
+			label10.Size = new Size(186, 15);
 			label10.TabIndex = 12;
-			label10.Text = "Copyright © DUB1401. 2023.";
+			label10.Text = "Copyright © DUB1401. 2023-2024.";
 			// 
 			// comboBox1
 			// 
 			comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-			comboBox1.Font = new Font("Segoe UI Variable Display", 9F, FontStyle.Regular, GraphicsUnit.Point);
+			comboBox1.Font = new Font("Segoe UI Variable Display", 9F);
 			comboBox1.FormattingEnabled = true;
 			comboBox1.Items.AddRange(new object[] { "Ultra HD (3840 × 2160)", "QHD (2560 × 1440)", "Full HD (1920 × 1080)", "HD (1280 × 720)", "Custom" });
 			comboBox1.Location = new Point(458, 140);
@@ -392,7 +392,7 @@
 			// label26
 			// 
 			label26.AutoSize = true;
-			label26.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+			label26.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
 			label26.Location = new Point(217, 205);
 			label26.Name = "label26";
 			label26.Size = new Size(32, 25);

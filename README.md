@@ -5,7 +5,7 @@
 
 ## Порядок установки и использования
 1. Установить [Alien Shooter 2: Reloaded](https://store.steampowered.com/app/33120/Alien_Shooter_2_Reloaded/) из [Steam](https://store.steampowered.com/) и запустить игру. Последнее необходимо для того, чтобы процессы игры создал нужный файл конфигурации. После загрузки главного меню игру необходимо закрыть.
-2. Установить .Net SDK версии 7.0 или новее с официального [сайта](https://dotnet.microsoft.com/en-us/download).
+2. Установить .Net SDK версии 8.0 с официального [сайта](https://dotnet.microsoft.com/en-us/download/dotnet).
 2. Скачать последний [релиз](https://github.com/DUB1401/AS2R-ResolutionPatcher/releases) патча.
 3. Распаковать архив, запустить исполняемый _*.exe_ файл и убедиться, что все исходные поля имеют зелёный цвет шрифта.
 4. Выбрать нужное разрешение и нажать кнопку установки патча.
@@ -32,9 +32,9 @@ ___
 _**Ответ**_: Патч работает только во время игрового процесса и не влияет на меню в виду программных особенностей.
 
 # Скриншот
-![2023-05-16_15-30-52](https://github.com/DUB1401/AS2R-ResolutionPatcher/assets/40277356/3ccd0a13-35ca-4830-b51e-b6b071b0e291)
+![Screenshot](AS2R%20Resolution%20Patcher/Screenshot.png)
 
 # Благодарность
 * [@KDD!^putler kaputt 26/93](https://steamcommunity.com/id/agof) – алгоритм патча.
 
-_Copyright © DUB1401. 2023._
+_Copyright © DUB1401. 2023-2024._

@@ -2,17 +2,18 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows8.0</TargetFramework>
     <RootNamespace>AS2R_Resolution_Patcher</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>$(AssemblyName)</Authors>
     <Company>$(Authors)</Company>
     <Copyright>Copyright © DUB1401. 2023.</Copyright>
     <Title></Title>
-    <AssemblyName>AS2R-Resolution-Patcher-1.0.2</AssemblyName>
+    <AssemblyName>AS2R-Resolution-Patcher-1.0.3</AssemblyName>
+    <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <ItemGroup>
